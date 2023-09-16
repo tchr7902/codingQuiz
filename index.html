@@ -11,8 +11,9 @@
 <div id="welcomeScreen">
     <header>
         <h1>Welcome to the Coding Quiz!</h1>
+        <p>This quiz is designed to test your knowledge of JavaScript. Answer the questions to the best of your knowledge, and enter your initials at the end to log your score!</p>
     </header>
-    <div>
+    <div id="welcomeButtons">
         <button id="start">Start</button>
         <button id="highscoreWelcome">Highscores</button>
     </div>
@@ -21,7 +22,6 @@
 <div id="questionSection">
     <header>
         <span id="timer">00:00</span>
-        <button id="highscoreQuestion">Highscores</button>
         <h2 id="question">Question goes here</h2>
     </header>
     <ul>
@@ -30,19 +30,24 @@
         <button id="a3">Answer 3</button>
         <button id="a4">Answer 4</button>
     </ul>
+    <button id="highscoreQuestion">Highscores</button>
 </div>
 
 <div id="highscoreScreen">
+<header>
     <h2>Highscores:</h2>
-    <ul>
+</header>
+    <ul id="hsList">
         <li id="hs1">hs1</li>
         <li id="hs2">hs1</li>
         <li id="hs3">hs1</li>
         <li id="hs4">hs1</li>
         <li id="hs5">hs1</li>
     </ul>
+<div id="hsButtons">
     <button id="back">Back</button>
     <button id="clear">Clear Highscores</button>
+</div>
 </div>
     
 </body>
