@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<!--Welcome Screen-->
 <div id="welcomeScreen">
     <header>
         <h1>Welcome to the Coding Quiz!</h1>
@@ -19,20 +20,22 @@
     </div>
 </div>
 
+<!--Question Screen-->
 <div id="questionSection">
     <header>
         <span id="timer">00:00</span>
         <h2 id="question">Question goes here</h2>
     </header>
     <ul>
-        <button id="a1">Answer 1</button>
-        <button id="a2">Answer 2</button>
-        <button id="a3">Answer 3</button>
-        <button id="a4">Answer 4</button>
+        <button class="answer-button">Answer 1</button>
+        <button class="answer-button">Answer 2</button>
+        <button class="answer-button">Answer 3</button>
+        <button class="answer-button">Answer 4</button>
     </ul>
     <button id="highscoreQuestion">Highscores</button>
 </div>
 
+<!--Highscore Screen-->
 <div id="highscoreScreen">
 <header>
     <h2>Highscores:</h2>
@@ -48,6 +51,20 @@
     <button id="back">Back</button>
     <button id="clear">Clear Highscores</button>
 </div>
+</div>
+
+<!--Quiz Finished Screen-->
+<div id="quizDone">
+    <header>
+        <h2>Quiz Finished!</h2>
+        <p>Your score was: </p>
+        <p>Enter in your initials to save your score!</p>
+        <div id="initialsBox">
+            <label for="initials">Initials:</label>
+            <input type="text" id="initials" name="initials"><br><br>
+            </div>
+    </header>
+    <button id="backHS">Back</button>
 </div>
     
 </body>

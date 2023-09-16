@@ -149,6 +149,12 @@ button:hover {
     margin: 0px 0px 20% 20%;
 }
 
+#backHS {
+    background-color: var(--blue);
+    font-size: 15px;
+    margin: 0px 0px 20% 20%;
+}
+
 #clear {
     background-color: #dc3545;
     font-size: 15px;
@@ -179,6 +185,18 @@ ul {
     list-style-type: none;
 }
 
+#quizDone {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#initialsBox {
+    color: var(--white);
+    max-width: 15em;
+}
+
 
 button[id^="a"] {
     display: flex;
@@ -192,8 +210,17 @@ button[id^="a"] {
     cursor: pointer;
 }
 
-
-button[id^="a"]:hover {
-    background-color: #555555;
+.answer-button {
+    background-color: var(--white);
+    color: var(--gray);
 }
 
+
+.answer-button:hover {
+    background-color: #555555;
+    color: var(--white);
+}
+
+#questionSection, #highscoreScreen, #quizDone {
+    display: none;
+}
