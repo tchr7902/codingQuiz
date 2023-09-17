@@ -134,6 +134,14 @@ const highscoreList = document.getElementById("hsList");
 const backButton = document.getElementById("back");
 const quizDone = document.getElementById("quizDone");
 const backHS = document.getElementById("backHS");
+const finalScore = document.getElementById("score");
+const hsHighscore = document.getElementById("hsHighscores")
+const clearHS = document.getElementById("clear")
+const hs1 = document.getElementById("hs1");
+const hs2 = document.getElementById("hs2");
+const hs3 = document.getElementById("hs3");
+const hs4 = document.getElementById("hs4");
+const hs5 = document.getElementById("hs5");
 let intervalId;
 
 function showWelcome() {
@@ -164,7 +172,6 @@ function displayQuestion() {
     const question = questions[currentQuestionIndex];
     questionElement.textContent = question.question;
 
-    // Update answer buttons
     answerButtons.forEach((button, index) => {
         button.textContent = question.answers[index];
     });
@@ -174,9 +181,9 @@ function selectAnswer(selectedIndex) {
     const question = questions[currentQuestionIndex];
     if (selectedIndex === question.correct) {
         score++;
-    }
-
-    if (currentQuestionIndex < questions.length - 1) {
+    } else if (selectedIndex != question.correct) {
+        timeLeft -= 10;
+    } if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
         displayQuestion();
     } else {
@@ -196,7 +203,9 @@ function endQuiz() {
     questionSection.style.display = "none";
     highscoreScreen.style.display = "none";
     quizDone.style.display = "block";
-    timeLeft = 60; 
+    timeLeft = 60;
+    finalScore.textContent = score;
+    JSON.stringify(score);
     updateTimerDisplay();
 }
 
@@ -225,13 +234,69 @@ function showHighscores() {
     welcomeScreen.style.display = "none";
     questionSection.style.display = "none";
     highscoreScreen.style.display = "block";
+    quizDone.style.display = "none";
+    displayHighscores();
+}
+
+function saveHighscore() {
+    const initialsInput = document.getElementById("initials");
+    const initialsValue = initialsInput.value.trim();
+
+    if (initialsValue !== '') {
+        const highscoreEntry = {
+            initials: initialsValue,
+            score: score,
+        };
+
+        let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+
+        highscores.push(highscoreEntry);
+
+        highscores.sort((a, b) => b.score - a.score);
+
+        highscores = highscores.slice(0, 5);
+
+        localStorage.setItem("highscores", JSON.stringify(highscores));
+
+        initialsInput.value = '';
+    }
+}
+
+function displayHighscores () {
+    const highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+
+    const highscoreList = document.getElementById("hsList");
+
+    highscoreList.innerHTML = '';
+
+    highscores.forEach((entry,index) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${index + 1}. ${entry.initials} - ${entry.score}`;
+        highscoreList.appendChild(listItem);
+    });
+}
+
+const submitButton = document.querySelector('form');
+submitButton.addEventListener("submit", function (event) {
+    event.preventDefault();
+    saveHighscore();
+});
+
+function hsClear() {
+    localStorage.removeItem('highscores');
+    const highscoreList = document.getElementById("hsList");
+    highscoreList.innerHTML = "";
 }
 
 startButton.addEventListener("click", startQuiz);
 highscoreWelcomeButton.addEventListener("click", showHighscores);
 highscoreQuestionButton.addEventListener("click", showHighscores);
+hsHighscores.addEventListener("click", showHighscores);
 backHS.addEventListener("click", showWelcome);
 backButton.addEventListener("click", showWelcome);
+clearHS.addEventListener("click", hsClear);
+
+
 
 answerButtons.forEach((button, index) => {
     button.addEventListener("click", () => selectAnswer(index));

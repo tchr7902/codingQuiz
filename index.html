@@ -41,11 +41,6 @@
     <h2>Highscores:</h2>
 </header>
     <ul id="hsList">
-        <li id="hs1">hs1</li>
-        <li id="hs2">hs1</li>
-        <li id="hs3">hs1</li>
-        <li id="hs4">hs1</li>
-        <li id="hs5">hs1</li>
     </ul>
 <div id="hsButtons">
     <button id="back">Back</button>
@@ -57,14 +52,19 @@
 <div id="quizDone">
     <header>
         <h2>Quiz Finished!</h2>
-        <p>Your score was: </p>
+        <p>Your score was: <p id="score"></p></p>
         <p>Enter in your initials to save your score!</p>
         <div id="initialsBox">
-            <label for="initials">Initials:</label>
-            <input type="text" id="initials" name="initials"><br><br>
-            </div>
+            <form>
+                <input type="text" id="initials" name="initials"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </header>
+    <div id="hsButtons">
     <button id="backHS">Back</button>
+    <button id="hsHighscores">Highscores</button>
+    </div>
 </div>
     
 </body>
